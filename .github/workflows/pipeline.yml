@@ -1,33 +1,27 @@
-name: cd cd on github 
+name: cd cd on github
 
-on: 
-  push: 
-    branches: [ "release" ] 
-  pull_request: 
-    branches: [ "release" ] 
+on:
+  push:
+    branches: [ "release" ]
+  pull_request:
+    branches: [ "release" ]
 
-jobs: 
+jobs:
+  build:
 
-  build: 
+    runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest 
-    strategy: 
-      matrix: 
-        node-version: [20.12.2] 
+    strategy:
+      matrix:
+        node-version: [20.12.2]
 
-    steps: 
-    - uses: actions/checkout@v4 
-    - name: Use Node.js ${{ matrix.node-version }} 
-      uses: actions/setup-node@v3 
-      with: 
-        node-version: ${{ matrix.node-version }} 
-        cache: 'npm' 
-
-    - name: Install dependencies 
-      run: npm install 
-
-    - name: Build and test 
-      run: npm run build 
-      
-    - name: Test
-      run: npm test
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm i
+    - run: npm run build 
+    - run: npm test
