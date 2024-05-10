@@ -61,6 +61,7 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
+            docker login -u ${{ secrets.DOCKER_EMAIL }} -p ${{ secrets.DOCKER_PASSWORD }}
             sudo docker pull ${{ secrets.DOCKER_USERNAME }} react-app:latest 
             sudo docker images
             sudo docker ps -a
