@@ -62,7 +62,6 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd ~/home/LandewankFF/react-app
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
             docker pull ${{ secrets.DOCKER_USERNAME }}/react-app:latest 
             docker run -d -p 80:80 ${{ secrets.DOCKER_USERNAME }}/react-app:latest 
