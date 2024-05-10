@@ -61,8 +61,8 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }} react-app:latest 
-            docker images
-            docker ps -a
-            docker run -d --name react-app -p 80:80 ${{ secrets.DOCKER_USERNAME }}/react-app
-            docker ps
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }} react-app:latest 
+            sudo docker images
+            sudo docker ps -a
+            sudo docker run -d --name react-app -p 80:80 ${{ secrets.DOCKER_USERNAME }}/react-app
+            sudo docker ps
