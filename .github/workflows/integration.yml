@@ -50,8 +50,7 @@ jobs:
   Deploy:
 
     runs-on: ubuntu-latest
-
-    needs: build
+    needs: Build
 
     steps:
       - name: Remote server and pull docker image
@@ -62,8 +61,8 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/react-app:latest 
+            docker pull ${{ secrets.DOCKER_USERNAME }} react-app:latest 
             docker images
             docker ps -a
-            docker run -d -p 80:80 ${{ secrets.DOCKER_USERNAME }}/react-app:latest 
+            docker run -d --name react-app -p 80:80 ${{ secrets.DOCKER_USERNAME }}/react-app
             docker ps
