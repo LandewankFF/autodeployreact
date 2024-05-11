@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          success setup ci cd pipeline on GitHub Action
         </a>
       </header>
     </div>
